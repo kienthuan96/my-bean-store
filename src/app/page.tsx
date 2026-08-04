@@ -53,6 +53,8 @@ export default function HomePage() {
                   <img
                     src={product.images[0]}
                     alt={product.name}
+                    width={400}
+                    height={400}
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                   />
                   <span className="absolute top-2 left-2 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">

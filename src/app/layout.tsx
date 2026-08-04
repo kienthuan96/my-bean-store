@@ -1,10 +1,51 @@
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import { PHONE_NUMBER, ZALO_LINK } from './data/products';
+import { PHONE_NUMBER, ZALO_LINK, SITE_URL } from './data/products';
 import Logo from '../../components/Logo';
 
-export const metadata = {
-  title: 'Kho Nông Sản Đậu - Chuyên Các Loại Đậu Sỉ & Lẻ',
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Kho Nông Sản Đậu - Chuyên Các Loại Đậu Sỉ & Lẻ',
+    template: '%s | Kho Nông Sản Đậu',
+  },
   description: 'Chuyên cung cấp đậu xanh, đậu đen xanh lòng, đậu đỏ, đậu nành, đậu trắng giá tốt tại kho.',
+  keywords: ['đậu xanh', 'đậu đen', 'đậu đỏ', 'đậu nành', 'đậu trắng', 'nông sản sỉ lẻ', 'kho đậu', 'đậu sỉ'],
+  authors: [{ name: 'Kho Nông Sản Đậu' }],
+  creator: 'Kho Nông Sản Đậu',
+  publisher: 'Kho Nông Sản Đậu',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'vi_VN',
+    url: SITE_URL,
+    siteName: 'Kho Nông Sản Đậu',
+    title: 'Kho Nông Sản Đậu - Chuyên Các Loại Đậu Sỉ & Lẻ',
+    description: 'Chuyên cung cấp đậu xanh, đậu đen xanh lòng, đậu đỏ, đậu nành, đậu trắng giá tốt tại kho.',
+    images: [`${SITE_URL}/og-image.png`],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kho Nông Sản Đậu - Chuyên Các Loại Đậu Sỉ & Lẻ',
+    description: 'Chuyên cung cấp đậu xanh, đậu đen xanh lòng, đậu đỏ, đậu nành, đậu trắng giá tốt tại kho.',
+    images: [`${SITE_URL}/og-image.png`],
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  verification: {
+    google: 'vXvE3Jcchqa1qQ-uNbd0_dDFjk9M1Tvrbr09wMfXIrQ',
+  },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#065f46',
 };
 
 export default function RootLayout({

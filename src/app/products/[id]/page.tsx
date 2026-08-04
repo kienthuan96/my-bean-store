@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { PRODUCTS, PHONE_NUMBER, ZALO_LINK } from '../../data/products';
+import { PRODUCTS, PHONE_NUMBER, ZALO_LINK, SITE_URL } from '../../data/products';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -16,7 +16,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${product.name} - Báo Giá Sỉ & Lẻ Mới Nhất`,
     description: `${product.fullDesc} Giá khoảng ${product.priceRange}. Liên hệ Zalo/Gọi điện để nhận báo giá sỉ tại kho.`,
+    keywords: [product.name, product.origin, 'đậu sỉ', 'đậu lẻ', 'báo giá đậu'],
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: `${SITE_URL}/products/${product.id}`,
+    },
     openGraph: {
+      type: 'website',
+      locale: 'vi_VN',
+      url: `${SITE_URL}/products/${product.id}`,
+      siteName: 'Kho Nông Sản Đậu',
+      title: `${product.name} - Giá Tốt Tại Kho`,
+      description: product.shortDesc,
+      images: [{ url: product.images[0], width: 800, height: 600 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
       title: `${product.name} - Giá Tốt Tại Kho`,
       description: product.shortDesc,
       images: [product.images[0]],
@@ -32,26 +50,59 @@ export default async function ProductDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  const productUrl = `${SITE_URL}/products/${product.id}`;
+
   // Schema.org Product cho Google
-  const jsonLd = {
+  const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    'name': product.name,
-    'image': product.images[0],
-    'description': product.fullDesc,
-    'offers': {
+    name: product.name,
+    image: product.images[0],
+    description: product.fullDesc,
+    url: productUrl,
+    offers: {
       '@type': 'AggregateOffer',
-      'priceCurrency': 'VND',
-      'lowPrice': product.priceRange.split(' - ')[0].replace(/\D/g, ''),
-      'highPrice': product.priceRange.split(' - ')[1].split(' ')[0].replace(/\D/g, ''),
+      priceCurrency: 'VND',
+      lowPrice: product.priceRange.split(' - ')[0].replace(/\D/g, ''),
+      highPrice: product.priceRange.split(' - ')[1].split(' ')[0].replace(/\D/g, ''),
     },
+  };
+
+  // Schema.org BreadcrumbList
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Trang chủ',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Sản phẩm',
+        item: `${SITE_URL}/products`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: product.name,
+        item: productUrl,
+      },
+    ],
   };
 
   return (
     <main className="min-h-screen pb-24 bg-amber-50/20">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* thanh điều hướng (Breadcrumb) */}
@@ -73,6 +124,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <img
                   src={product.images[0]}
                   alt={product.name}
+                  width={800}
+                  height={600}
                   className="w-full h-72 sm:h-80 object-cover"
                 />
               </div>
@@ -83,6 +136,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
                       key={idx}
                       src={img}
                       alt={`${product.name} ${idx + 1}`}
+                      width={200}
+                      height={200}
                       className="rounded-lg h-20 w-full object-cover border cursor-pointer hover:opacity-80"
                     />
                   ))}

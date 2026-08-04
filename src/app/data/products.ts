@@ -1,3 +1,5 @@
+export const SITE_URL = 'https://my-bean-store.vercel.app';
+
 export interface Product {
     id: string;
     name: string;
