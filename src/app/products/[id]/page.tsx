@@ -1,31 +1,54 @@
-'use client'; // Bắt buộc để dùng useState trên trình duyệt
-
-import { useState } from 'react';
-import Link from 'next/link';
-import { PRODUCTS, PHONE_NUMBER, ZALO_LINK, SITE_URL } from '../../data/products';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import { PRODUCTS, PHONE_NUMBER, ZALO_LINK, SITE_URL } from '../../data/products';
 
 interface PageProps {
   params: Promise<{ id: string }>;
 }
 
-export default function ProductDetailPage({ params }: PageProps) {
-  return <ProductDetailContent params={params} />;
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const product = PRODUCTS.find((p) => p.id === resolvedParams.id);
+  if (!product) return {};
+
+  return {
+    title: `${product.name} - Báo Giá Sỉ & Lẻ Mới Nhất`,
+    description: `${product.fullDesc} Giá ${product.priceRange}. Liên hệ Zalo/Gọi để nhận báo giá sỉ tại kho.`,
+    keywords: [product.name, product.origin, 'đậu sỉ', 'đậu lẻ', 'báo giá đậu'],
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: `${SITE_URL}/products/${product.id}`,
+    },
+    openGraph: {
+      type: 'website',
+      locale: 'vi_VN',
+      url: `${SITE_URL}/products/${product.id}`,
+      siteName: 'Kho Nông Sản Đậu',
+      title: `${product.name} - Giá Tốt Tại Kho`,
+      description: product.shortDesc,
+      images: [{ url: product.images[0], width: 800, height: 600 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@khonongsan',
+      title: `${product.name} - Giá Tốt Tại Kho`,
+      description: product.shortDesc,
+      images: [product.images[0]],
+    },
+  };
 }
 
-// Component xử lý chính
-import { use } from 'react';
-
-function ProductDetailContent({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = use(params);
+export default async function ProductDetailPage({ params }: PageProps) {
+  const resolvedParams = await params;
   const product = PRODUCTS.find((p) => p.id === resolvedParams.id);
 
   if (!product) {
     notFound();
   }
-
-  // TẠO STATE ĐỂ LƯU ẢNH ĐANG ĐƯỢC CHỌN (MẶC ĐỊNH LÀ ẢNH ĐẦU TIÊN)
-  const [activeImage, setActiveImage] = useState(product.images[0]);
 
   const productUrl = `${SITE_URL}/products/${product.id}`;
 
@@ -48,11 +71,40 @@ function ProductDetailContent({ params }: { params: Promise<{ id: string }> }) {
     },
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Trang chủ',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Sản phẩm',
+        item: `${SITE_URL}/products`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: product.name,
+        item: productUrl,
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen pb-24 bg-[#FFFDF9] text-[#3E2B1E]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* BREADCRUMB */}
@@ -71,17 +123,15 @@ function ProductDetailContent({ params }: { params: Promise<{ id: string }> }) {
             {/* CỘT 1: HÌNH ẢNH SẢN PHẨM */}
             <div>
               <div className="rounded-xl overflow-hidden bg-[#FAF7F2] border border-[#ECE5D8]">
-                {/* HIỂN THỊ ẢNH ĐANG ĐƯỢC CHỌN (ACTIVE IMAGE) */}
                 <img
-                  src={activeImage}
+                  src={product.images[0]}
                   alt={product.name}
                   width={800}
                   height={600}
-                  className="w-full h-72 sm:h-80 object-cover transition-all duration-300"
+                  className="w-full h-72 sm:h-80 object-cover"
                 />
               </div>
 
-              {/* DANH SÁCH ẢNH NHỎ BÊN DƯỚI */}
               {product.images.length > 1 && (
                 <div className="grid grid-cols-3 gap-2 mt-3">
                   {product.images.map((img, idx) => (
@@ -91,12 +141,7 @@ function ProductDetailContent({ params }: { params: Promise<{ id: string }> }) {
                       alt={`${product.name} ${idx + 1}`}
                       width={200}
                       height={200}
-                      onClick={() => setActiveImage(img)} // BẤM VÀO SẼ CẬP NHẬT ẢNH LỚN
-                      className={`rounded-lg h-20 w-full object-cover border cursor-pointer transition ${
-                        activeImage === img 
-                          ? 'border-2 border-[#B8421D] opacity-100 scale-95 shadow-md' 
-                          : 'border-[#ECE5D8] opacity-75 hover:opacity-100'
-                      }`}
+                      className="rounded-lg h-20 w-full object-cover border border-[#ECE5D8]"
                     />
                   ))}
                 </div>

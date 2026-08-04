@@ -25,13 +25,12 @@ export const metadata: Metadata = {
     siteName: 'Kho Nông Sản Đậu',
     title: 'Kho Nông Sản Đậu - Chuyên Các Loại Đậu Sỉ & Lẻ',
     description: 'Chuyên cung cấp đậu xanh, đậu đen xanh lòng, đậu đỏ, đậu nành, đậu trắng giá tốt tại kho.',
-    images: [`${SITE_URL}/og-image.png`],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@khonongsan',
     title: 'Kho Nông Sản Đậu - Chuyên Các Loại Đậu Sỉ & Lẻ',
     description: 'Chuyên cung cấp đậu xanh, đậu đen xanh lòng, đậu đỏ, đậu nành, đậu trắng giá tốt tại kho.',
-    images: [`${SITE_URL}/og-image.png`],
   },
   icons: {
     icon: '/favicon.ico',
@@ -56,6 +55,25 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className="antialiased text-[#3E2B1E] bg-[#EFE6D3] font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Kho Nông Sản Đậu',
+              url: SITE_URL,
+              telephone: PHONE_NUMBER,
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '58 Trần Chánh Chiếu, phường Chợ Lớn',
+                addressLocality: 'TP Hồ Chí Minh',
+                addressCountry: 'VN',
+              },
+            }),
+          }}
+        />
+
         {/* THANH HEADER PHONG CÁCH NÔNG THÔN MỘC MẠC */}
         <header className="sticky top-0 z-50 bg-[#E6DCC4]/95 backdrop-blur-md border-b border-[#C8BBA2] px-4 py-3 shadow-sm">
           <div className="max-w-6xl mx-auto flex justify-between items-center">
