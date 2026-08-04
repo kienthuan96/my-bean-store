@@ -11,7 +11,7 @@ export default function HomePage() {
             Kho Nông Sản Sỉ & Lẻ
           </span>
           <h1 className="text-2xl sm:text-4xl font-bold mt-2">
-            Chuyên Các Loại Đậu Quê - Giá Cả Cạnh Tranh
+            Chuyên Các Loại Đậu - Giá Cả Cạnh Tranh
           </h1>
           <p className="text-emerald-100 text-sm sm:text-base mt-2">
             Đậu xanh • Đậu đen • Đậu đỏ • Đậu nành • Đậu trắng. Giao hàng toàn quốc.

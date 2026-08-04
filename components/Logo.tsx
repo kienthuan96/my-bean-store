@@ -26,7 +26,7 @@ export default function Logo() {
       {/* Tên Thương Hiệu */}
       <div className="flex flex-col">
         <span className="text-lg font-black tracking-tight text-gray-900 group-hover:text-emerald-800 transition">
-          NÔNG SẢN <span className="text-emerald-700">ĐẬU QUÊ</span>
+          NÔNG SẢN
         </span>
         <span className="text-[10px] font-bold text-amber-700 tracking-wider uppercase -mt-1">
           Kho Sỉ & Lẻ Toàn Quốc

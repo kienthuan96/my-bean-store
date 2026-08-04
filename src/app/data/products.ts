@@ -16,9 +16,9 @@ export const ZALO_LINK = `https://zalo.me/${PHONE_NUMBER}`;
 export const PRODUCTS: Product[] = [
     {
         id: 'dau-xanh',
-        name: 'Đậu Xanh Hạt Mẩy Quê',
+        name: 'Đậu Xanh Hạt Mẩy',
         priceRange: '32.000đ - 45.000đ / kg',
-        origin: 'Đắk Lắk / Quê',
+        origin: 'Đắk Lắk ',
         shortDesc: 'Hạt mẩy, đều, phơi khô tự nhiên. Thích hợp làm bánh, nấu xôi, làm giá đỗ.',
         fullDesc: 'Đậu xanh được thu hoạch từ vụ mùa mới nhất, hạt tròn mẩy, phơi đủ nắng nên bảo quản được lâu mà không cần dùng hóa chất chống mối mọt. Rất phù hợp cho các lò làm bánh, xưởng sản xuất giá đỗ hoặc hộ gia đình nấu xôi, chè.',
         specs: ['Độ ẩm < 12%', 'Tỷ lệ hạt lép, vỡ < 1%', 'Tỷ lệ tạp chất < 0.5%', 'Đóng gói: Bao 10kg, 25kg, 50kg'],

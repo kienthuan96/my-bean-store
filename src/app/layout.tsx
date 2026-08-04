@@ -3,7 +3,7 @@ import { PHONE_NUMBER, ZALO_LINK } from './data/products';
 import Logo from '../../components/Logo';
 
 export const metadata = {
-  title: 'Kho Nông Sản Đậu Quê - Chuyên Các Loại Đậu Sỉ & Lẻ',
+  title: 'Kho Nông Sản Đậu - Chuyên Các Loại Đậu Sỉ & Lẻ',
   description: 'Chuyên cung cấp đậu xanh, đậu đen xanh lòng, đậu đỏ, đậu nành, đậu trắng giá tốt tại kho.',
 };
 
