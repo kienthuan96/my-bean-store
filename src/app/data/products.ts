@@ -26,9 +26,8 @@ export const PRODUCTS: Product[] = [
         specs: ['Đãi sạch vỏ, vàng tươi', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Làm nhân bánh trung thu, bánh chưng', 'Nấu chè đậu xanh đánh', 'Làm bánh xèo, chè trôi nước'],
         images: [
-            'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80',
+            '/products/dau-xanh-troc-vo.jpg',
+            '/products/dau-xanh-troc-vo-1.jpg',
         ],
     },
     {
@@ -41,9 +40,8 @@ export const PRODUCTS: Product[] = [
         specs: ['Cà vỡ đôi còn vỏ', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Nấu xôi đậu xanh', 'Nấu chè, cháo dinh dưỡng', 'Làm nhân bánh gia đình'],
         images: [
-            'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80',
+            '/products/dau-xanh-ca-co-vo.jpg',
+            '/products/dau-xanh-ca-co-vo-1.jpeg',
         ],
     },
     {
@@ -56,9 +54,8 @@ export const PRODUCTS: Product[] = [
         specs: ['Hạt mẩy tròn chọn lọc', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Ủ mầm làm giá đỗ sạch', 'Nấu chè đậu xanh nguyên hạt', 'Nấu xôi, làm bột ngũ cốc'],
         images: [
-            'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
+            '/products/dau-xanh-hat.png',
+            '/products/dau-xanh-hat.jpg',
         ],
     },
     {
@@ -71,9 +68,8 @@ export const PRODUCTS: Product[] = [
         specs: ['Hạt to tròn đều', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Rang tỏi ớt, rang muối', 'Làm mắm đậu phộng, muối vừng', 'Làm kẹo cu đơ, kẹo thốt nốt'],
         images: [
-            'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1528751014936-863e6e7a319c?auto=format&fit=crop&w=800&q=80',
+            '/products/dau-phong-rang.jpeg',
+            '/products/dau-phong-rang-1.jpeg'
         ],
     },
     {
@@ -86,9 +82,7 @@ export const PRODUCTS: Product[] = [
         specs: ['Hạt béo chọn lọc', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Nấu xôi đậu phộng', 'Hầm giò heo, nấu cà ri', 'Nấu chè đậu phộng'],
         images: [
-            'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1528751014936-863e6e7a319c?auto=format&fit=crop&w=800&q=80',
+            '/products/dau-phong-nau.jpg',
         ],
     },
     {
@@ -101,9 +95,8 @@ export const PRODUCTS: Product[] = [
         specs: ['100% ruột xanh lòng', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Rang làm trà đậu đen giảm cân', 'Nấu chè đậu đen giải nhiệt', 'Ủ mầm làm ngũ cốc dinh dưỡng'],
         images: [
-            'https://images.unsplash.com/photo-1551462147-ff29053bfc14?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1588615419955-58d04e33d452?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1621996346565-e3d5d6281894?auto=format&fit=crop&w=800&q=80',
+            '/products/dau-den-xanh-long.png',
+            '/products/dau-den-xanh-long-1.png',
         ],
     },
     {
@@ -116,9 +109,7 @@ export const PRODUCTS: Product[] = [
         specs: ['Hạt đỏ thẫm đều màu', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Nấu chè đậu đỏ', 'Làm nhân bánh trung thu, bánh bao', 'Nấu cháo dinh dưỡng'],
         images: [
-            'https://images.unsplash.com/photo-1515543922502-880a2d308c90?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1613728913123-977c8018e398?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=800&q=80',
+            '/products/dau-do-hat-nho.png'
         ],
     },
     {
@@ -131,9 +122,8 @@ export const PRODUCTS: Product[] = [
         specs: ['Không biến đổi gen (Non-GMO)', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Làm đậu hũ, tào phớ', 'Nấu sữa đậu nành', 'Làm tương, ủ mầm đậu nành'],
         images: [
-            'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=800&q=80',
+            '/products/dau-nanh.jpg',
+            '/products/dau-nanh-1.jpg'
         ],
     },
     {
@@ -146,9 +136,8 @@ export const PRODUCTS: Product[] = [
         specs: ['Hạt nhỏ tròn đều', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Nấu chè đậu trắng', 'Làm mứt đậu ngày Tết', 'Nấu xôi, làm nhân bánh'],
         images: [
-            'https://images.unsplash.com/photo-1515543922502-880a2d308c90?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
+            '/products/dau-trang-bi.jpeg',
+            '/products/dau-trang-bi-1.jpeg'
         ],
     },
     {
@@ -161,9 +150,7 @@ export const PRODUCTS: Product[] = [
         specs: ['Hạt to chọn lọc', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Nấu lagu, bò kho, rô-ti', 'Hầm súp, nấu món Âu/Á', 'Nấu chè đậu trắng hạt to'],
         images: [
-            'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1515543922502-880a2d308c90?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
+            '/products/dau-trang-lagu.jpg',
         ],
     },
     {
@@ -176,9 +163,8 @@ export const PRODUCTS: Product[] = [
         specs: ['Mè thuần không nhuộm', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Nấu chè mè đen (chí mà phủ)', 'Làm sữa hạt mè đen dinh dưỡng', 'Làm muối vừng, rắc bánh quy/bánh mì'],
         images: [
-            'https://images.unsplash.com/photo-1608797178974-15b35a64ede9?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1509358271058-acd05cc93219?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1515543922502-880a2d308c90?auto=format&fit=crop&w=800&q=80',
+            '/products/me-den.jpeg',
+            '/products/me-den-1.jpeg'
         ],
     },
     {
@@ -191,9 +177,8 @@ export const PRODUCTS: Product[] = [
         specs: ['Hạt trắng ngà tự nhiên', 'Đóng gói: Từ bao 10kg trở lên'],
         uses: ['Rang rắc bánh gấc, bánh mì, kẹo mè xửng', 'Làm muối vừng trắng', 'Ép dầu mè, làm nước xốt mè'],
         images: [
-            'https://images.unsplash.com/photo-1509358271058-acd05cc93219?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1608797178974-15b35a64ede9?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
+            '/products/me-trang.jpg',
+            '/products/me-trang-1.jpeg'
         ],
     },
 ];
