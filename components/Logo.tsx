@@ -28,9 +28,6 @@ export default function Logo() {
         <span className="text-lg font-black tracking-tight text-gray-900 group-hover:text-emerald-800 transition">
           NÔNG SẢN
         </span>
-        <span className="text-[10px] font-bold text-amber-700 tracking-wider uppercase -mt-1">
-          Kho Sỉ & Lẻ Toàn Quốc
-        </span>
       </div>
     </Link>
   );

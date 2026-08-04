@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#065f46',
+  themeColor: '#74834A',
 };
 
 export default function RootLayout({
@@ -55,10 +55,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
-      <body className="antialiased text-gray-900 bg-amber-50/20">
-        {/* THANH HEADER CHỨA LOGO */}
-        <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 px-4 py-3 shadow-sm">
-          <div className="max-w-5xl mx-auto flex justify-between items-center">
+      <body className="antialiased text-[#3E2B1E] bg-[#EFE6D3] font-sans">
+        {/* THANH HEADER PHONG CÁCH NÔNG THÔN MỘC MẠC */}
+        <header className="sticky top-0 z-50 bg-[#E6DCC4]/95 backdrop-blur-md border-b border-[#C8BBA2] px-4 py-3 shadow-sm">
+          <div className="max-w-6xl mx-auto flex justify-between items-center">
             {/* LOGO BÊN TRÁI */}
             <Logo />
 
@@ -68,13 +68,13 @@ export default function RootLayout({
                 href={ZALO_LINK}
                 target="_blank"
                 rel="noreferrer"
-                className="hidden sm:inline-block bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-100 transition"
+                className="bg-[#5C7053] hover:bg-[#4B5E43] text-[#F7F3EB] border border-[#48593E] text-xs font-bold px-3.5 py-2 rounded-lg shadow-sm transition flex items-center gap-1.5"
               >
                 💬 Chat Zalo
               </a>
               <a
                 href={`tel:${PHONE_NUMBER}`}
-                className="bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-bold px-3.5 py-2 rounded-lg shadow transition flex items-center gap-1.5"
+                className="bg-[#A04222] hover:bg-[#8A371A] text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-lg shadow transition flex items-center gap-1.5 border border-[#833217]"
               >
                 📞 <span className="hidden sm:inline">Gọi:</span> {PHONE_NUMBER}
               </a>
@@ -84,6 +84,81 @@ export default function RootLayout({
 
         {/* NỘI DUNG TRANG WEB */}
         {children}
+
+        {/* FOOTER ĐẤT NUNG MỘC MẠC */}
+        <footer className="bg-[#9E3F20] text-[#FDFBF7] pt-10 pb-6 px-4 border-t-4 border-[#782D14]">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-8 pb-4 border-b border-[#B85737]">
+              <h3 className="font-serif text-lg sm:text-xl font-bold uppercase tracking-wider text-[#FFE8D6]">
+                THÔNG TIN LIÊN HỆ & CHÍNH SÁCH
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 text-sm">
+              {/* CỘT 1: THÔNG TIN KHO */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 font-serif font-bold text-base text-[#FFE8D6]">
+                  <span>🛖</span> KHO NÔNG SẢN ĐẬU
+                </div>
+                <p className="flex items-start gap-2 text-[#F2DDD0] text-xs leading-relaxed">
+                  <span>📍</span> 58 Trần Chánh Chiếu, phường Chợ Lớn, TP Hồ Chí Minh
+                </p>
+                <p className="flex items-center gap-2 text-[#F2DDD0] text-xs">
+                  <span>📞</span> Hotline: {PHONE_NUMBER}
+                </p>
+                <p className="flex items-center gap-2 text-[#F2DDD0] text-xs">
+                  <span>✉️</span> Email: triplethuan96@gmail.com
+                </p>
+              </div>
+
+              {/* CỘT 2: SẢN PHẨM NỔI BẬT */}
+              <div>
+                <h4 className="font-serif font-bold text-base text-[#FFE8D6] mb-3">
+                  SẢN PHẨM NỔI BẬT
+                </h4>
+                <ul className="space-y-2 text-xs text-[#F2DDD0]">
+                  <li className="hover:text-white cursor-pointer">• Đậu Xanh Hạt Mẩy</li>
+                  <li className="hover:text-white cursor-pointer">• Đậu Đen Xanh Lòng</li>
+                  <li className="hover:text-white cursor-pointer">• Đậu Đỏ Hạt Nhỏ</li>
+                  <li className="hover:text-white cursor-pointer">• Gạo Sạch Mộc</li>
+                  <li className="hover:text-white cursor-pointer">• Hạt Ngũ Cốc Dinh Dưỡng</li>
+                </ul>
+              </div>
+
+              {/* CỘT 3: CHÍNH SÁCH */}
+              <div>
+                <h4 className="font-serif font-bold text-base text-[#FFE8D6] mb-3">
+                  CHÍNH SÁCH MUA HÀNG
+                </h4>
+                <ul className="space-y-2 text-xs text-[#F2DDD0]">
+                  <li>• Thanh toán khi nhận hàng (COD)</li>
+                  <li>• Chính sách đổi trả linh hoạt</li>
+                  <li>• Kiểm tra hàng trước khi thanh toán</li>
+                  <li>• Bán sỉ tối thiểu từ 10kg</li>
+                  <li>• Nhận giao hàng tận nơi đơn từ 50kg trở lên</li>
+                  <li>• Đơn hàng gần hỗ trợ giao tận nơi</li>
+                </ul>
+              </div>
+
+              {/* CỘT 4: MẠNG XÃ HỘI */}
+              <div>
+                <h4 className="font-serif font-bold text-base text-[#FFE8D6] mb-3">
+                  THEO DÕI CHÚNG TÔI
+                </h4>
+                <div className="space-y-2">
+                  <a href={ZALO_LINK} target="_blank" rel="noreferrer" className="block bg-[#833116] hover:bg-[#722A12] px-3 py-1.5 rounded text-xs text-center border border-[#B34D2C] transition">
+                    💬 Zalo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* DÒNG BẢN QUYỀN */}
+            <div className="pt-4 border-t border-[#B85737] text-center text-[11px] text-[#E8C2B3]">
+              Bản quyền © 2026 Kho Nông Sản Đậu Sạch. Giấy phép kinh doanh số 60-01-23456 do Sở KH&ĐT Đắk Lắk cấp ngày 12/01/2023.
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );
