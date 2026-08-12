@@ -1,5 +1,3 @@
-export const SITE_URL = 'https://my-bean-store.vercel.app';
-
 export interface Product {
     id: string;
     name: string;
@@ -11,9 +9,6 @@ export interface Product {
     uses: string[];
     images: string[];
 }
-
-export const PHONE_NUMBER = '0933650317';
-export const ZALO_LINK = `https://zalo.me/${PHONE_NUMBER}`;
 
 export const PRODUCTS: Product[] = [
     {

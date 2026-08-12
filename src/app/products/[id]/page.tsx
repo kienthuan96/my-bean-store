@@ -1,15 +1,28 @@
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { PRODUCTS, PHONE_NUMBER, ZALO_LINK, SITE_URL } from '../../data/products';
+import { PRODUCTS } from '../../data/products';
+import { PHONE_NUMBER, SITE_URL } from '../../data/site';
+import { buildBreadcrumbJsonLd, buildProductJsonLd } from '../../lib/seo';
+import JsonLd from '../../../../components/JsonLd';
+import { PhoneButton, ZaloButton } from '../../../../components/ContactButtons';
 
 interface PageProps {
   params: Promise<{ id: string }>;
 }
 
+function getProduct(id: string) {
+  return PRODUCTS.find((p) => p.id === id);
+}
+
+export function generateStaticParams() {
+  return PRODUCTS.map((product) => ({ id: product.id }));
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const product = PRODUCTS.find((p) => p.id === resolvedParams.id);
+  const { id } = await params;
+  const product = getProduct(id);
   if (!product) return {};
 
   return {
@@ -35,6 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     twitter: {
       card: 'summary_large_image',
       site: '@khonongsan',
+      creator: '@khonongsan',
       title: `${product.name} - Giá Tốt Tại Kho`,
       description: product.shortDesc,
       images: [product.images[0]],
@@ -43,8 +57,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
-  const resolvedParams = await params;
-  const product = PRODUCTS.find((p) => p.id === resolvedParams.id);
+  const { id } = await params;
+  const product = getProduct(id);
 
   if (!product) {
     notFound();
@@ -52,60 +66,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   const productUrl = `${SITE_URL}/products/${product.id}`;
 
-  const priceParts = product.priceRange.split(' - ');
-  const lowPrice = priceParts[0] ? priceParts[0].replace(/\D/g, '') : '0';
-  const highPrice = priceParts[1] ? priceParts[1].replace(/\D/g, '') : lowPrice;
-
-  const productJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.name,
-    image: product.images[0],
-    description: product.fullDesc,
-    url: productUrl,
-    offers: {
-      '@type': 'AggregateOffer',
-      priceCurrency: 'VND',
-      lowPrice: lowPrice,
-      highPrice: highPrice,
-    },
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Trang chủ',
-        item: SITE_URL,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Sản phẩm',
-        item: `${SITE_URL}/products`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: product.name,
-        item: productUrl,
-      },
-    ],
-  };
-
   return (
     <main className="min-h-screen pb-24 bg-[#FFFDF9] text-[#3E2B1E]">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLd data={buildProductJsonLd(product, productUrl)} />
+      <JsonLd data={buildBreadcrumbJsonLd(product, productUrl)} />
 
       {/* BREADCRUMB */}
       <div className="bg-[#F7F2E7] border-b border-[#ECE5D8] py-3 px-4 shadow-sm">
@@ -119,15 +83,17 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <div className="max-w-4xl mx-auto px-4 mt-6">
         <div className="bg-white rounded-2xl border border-[#ECE5D8] p-5 sm:p-8 shadow-sm">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            
+
             {/* CỘT 1: HÌNH ẢNH SẢN PHẨM */}
             <div>
               <div className="rounded-xl overflow-hidden bg-[#FAF7F2] border border-[#ECE5D8]">
-                <img
+                <Image
                   src={product.images[0]}
                   alt={product.name}
                   width={800}
                   height={600}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  priority
                   className="w-full h-72 sm:h-80 object-cover"
                 />
               </div>
@@ -135,12 +101,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
               {product.images.length > 1 && (
                 <div className="grid grid-cols-3 gap-2 mt-3">
                   {product.images.map((img, idx) => (
-                    <img
+                    <Image
                       key={idx}
                       src={img}
                       alt={`${product.name} ${idx + 1}`}
                       width={200}
                       height={200}
+                      sizes="(max-width: 640px) 33vw, 25vw"
                       className="rounded-lg h-20 w-full object-cover border border-[#ECE5D8]"
                     />
                   ))}
@@ -158,7 +125,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#3E2B1E] mt-3">
                   {product.name}
                 </h1>
-                
+
                 <div className="mt-4 p-4 bg-[#FFFBF3] rounded-xl border border-[#ECE5D8]">
                   <span className="text-xs text-[#8A7966] font-semibold uppercase tracking-wider">
                     Khoảng giá tham khảo:
@@ -189,20 +156,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
               </div>
 
               <div className="mt-6 space-y-3">
-                <a
-                  href={ZALO_LINK}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-full bg-[#A07C4A] hover:bg-[#8A683B] text-white font-bold py-3 px-4 rounded-xl text-center block shadow border border-[#7D5E34] transition text-sm sm:text-base"
-                >
+                <ZaloButton className="w-full bg-[#A07C4A] hover:bg-[#8A683B] text-white font-bold py-3 px-4 rounded-xl text-center block shadow border border-[#7D5E34] transition text-sm sm:text-base">
                   💬 Chat Zalo Nhận Báo Giá Số Lượng Lớn
-                </a>
-                <a
-                  href={`tel:${PHONE_NUMBER}`}
-                  className="w-full bg-[#B8421D] hover:bg-[#9C3516] text-white font-bold py-3 px-4 rounded-xl text-center block shadow border border-[#7A2B13] transition text-sm sm:text-base"
-                >
+                </ZaloButton>
+                <PhoneButton className="w-full bg-[#B8421D] hover:bg-[#9C3516] text-white font-bold py-3 px-4 rounded-xl text-center block shadow border border-[#7A2B13] transition text-sm sm:text-base">
                   📞 Gọi Ngay Hotline: {PHONE_NUMBER}
-                </a>
+                </PhoneButton>
               </div>
             </div>
 

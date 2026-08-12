@@ -1,5 +1,7 @@
-import Link from 'next/link';
-import { PRODUCTS, PHONE_NUMBER, ZALO_LINK } from './data/products';
+import { PRODUCTS } from './data/products';
+import { PHONE_NUMBER } from './data/site';
+import ProductCard from '../../components/ProductCard';
+import { PhoneButton, ZaloButton } from '../../components/ContactButtons';
 
 export default function HomePage() {
   return (
@@ -17,20 +19,12 @@ export default function HomePage() {
             Đậu xanh • Đậu đen • Đậu đỏ • Đậu nành • Đậu trắng
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a
-              href={ZALO_LINK}
-              target="_blank"
-              rel="noreferrer"
-              className="bg-[#A07C4A] hover:bg-[#8A683B] text-white font-bold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 shadow border border-[#7D5E34] transition"
-            >
+            <ZaloButton className="bg-[#A07C4A] hover:bg-[#8A683B] text-white font-bold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 shadow border border-[#7D5E34] transition">
               💬 Báo Giá Zalo Trực Tiếp
-            </a>
-            <a
-              href={`tel:${PHONE_NUMBER}`}
-              className="bg-[#B8421D] hover:bg-[#9C3516] text-white font-bold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 shadow border border-[#7A2B13] transition"
-            >
+            </ZaloButton>
+            <PhoneButton className="bg-[#B8421D] hover:bg-[#9C3516] text-white font-bold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 shadow border border-[#7A2B13] transition">
               📞 Hotline: {PHONE_NUMBER}
-            </a>
+            </PhoneButton>
           </div>
         </div>
       </section>
@@ -46,69 +40,16 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {PRODUCTS.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white rounded-2xl border border-[#ECE5D8] overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between"
-            >
-              <div>
-                <Link href={`/products/${product.id}`} className="block relative h-52 bg-[#FA7F2] overflow-hidden group">
-                  <img
-                    src={product.images[0]}
-                    alt={product.name}
-                    width={400}
-                    height={400}
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                  />
-                  {/* NHÃN VÙNG MIỀN */}
-                  <span className="absolute top-3 left-3 bg-[#8C7147] text-[#FFFDF7] text-[11px] font-bold px-2.5 py-1 rounded shadow border border-[#6E5734] flex items-center gap-1">
-                    🏷️ {product.origin}
-                  </span>
-                </Link>
-
-                <div className="p-4">
-                  <Link href={`/products/${product.id}`}>
-                    <h3 className="text-lg font-serif font-bold text-[#3E2B1E] hover:text-[#B8421D] transition">
-                      {product.name}
-                    </h3>
-                  </Link>
-                  <p className="text-[#B8421D] font-sans font-bold text-base mt-1 lining-nums tabular-nums">
-                    {product.priceRange}
-                  </p>
-                  <p className="text-[#6B5A4B] text-xs mt-2 line-clamp-2 leading-relaxed">{product.shortDesc}</p>
-                </div>
-              </div>
-
-              <div className="p-4 pt-0 flex gap-2">
-                <Link
-                  href={`/products/${product.id}`}
-                  className="flex-1 bg-[#F7F2E7] hover:bg-[#EBE3D3] text-[#3E2B1E] text-xs font-bold py-2.5 rounded-lg text-center transition border border-[#E0D7C5]"
-                >
-                  Xem Chi Tiết
-                </Link>
-                <a
-                  href={ZALO_LINK}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex-1 bg-[#B8421D] hover:bg-[#9C3516] text-white text-xs font-bold py-2.5 rounded-lg text-center transition border border-[#7A2B13]"
-                >
-                  Nhận Báo Giá
-                </a>
-              </div>
-            </div>
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
 
       {/* FLOATING ACTION BUTTON */}
       <div className="fixed bottom-5 right-5 z-40">
-        <a
-          href={ZALO_LINK}
-          target="_blank"
-          rel="noreferrer"
-          className="bg-white text-[#3E2B1E] font-bold px-4 py-3 rounded-full shadow-xl hover:bg-[#FAF7F2] flex items-center gap-2 border-2 border-[#B8421D] text-sm animate-bounce"
-        >
+        <ZaloButton className="bg-white text-[#3E2B1E] font-bold px-4 py-3 rounded-full shadow-xl hover:bg-[#FAF7F2] flex items-center gap-2 border-2 border-[#B8421D] text-sm animate-bounce">
           💬 Chat Zalo
-        </a>
+        </ZaloButton>
       </div>
     </main>
   );

@@ -1,4 +1,5 @@
-import { PRODUCTS, SITE_URL } from './data/products';
+import { PRODUCTS } from './data/products';
+import { SITE_URL } from './data/site';
 
 export default async function sitemap() {
   const productUrls = PRODUCTS.map((product) => ({
