@@ -1,5 +1,5 @@
 import type { Product } from '../data/products';
-import { ADDRESS, BRAND_NAME, PHONE_NUMBER, SITE_URL } from '../data/site';
+import { ADDRESS, BRAND_NAME, EMAIL, PHONE_NUMBER, SITE_URL } from '../data/site';
 
 /** "40.000đ - 45.000đ / kg" -> { lowPrice: "40000", highPrice: "45000" } */
 export function parsePriceRange(priceRange: string): { lowPrice: string; highPrice: string } {
@@ -12,10 +12,13 @@ export function parsePriceRange(priceRange: string): { lowPrice: string; highPri
 export function buildOrganizationJsonLd() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'LocalBusiness',
     name: BRAND_NAME,
     url: SITE_URL,
+    logo: `${SITE_URL}/android-chrome-192x192.png`,
+    image: `${SITE_URL}/products/dau-xanh-hat.png`,
     telephone: PHONE_NUMBER,
+    email: EMAIL,
     address: {
       '@type': 'PostalAddress',
       streetAddress: ADDRESS.street,
@@ -63,12 +66,6 @@ export function buildBreadcrumbJsonLd(product: Product, productUrl: string) {
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Sản phẩm',
-        item: `${SITE_URL}/products`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
         name: product.name,
         item: productUrl,
       },

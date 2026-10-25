@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!product) return {};
 
   return {
-    title: `${product.name} - Báo Giá Sỉ & Lẻ Mới Nhất`,
+    title: `${product.name} - Báo Giá Sỉ & Lẻ`,
     description: `${product.fullDesc} Giá ${product.priceRange}. Liên hệ Zalo/Gọi để nhận báo giá sỉ tại kho.`,
     keywords: [product.name, product.origin, 'đậu sỉ', 'đậu lẻ', 'báo giá đậu'],
     robots: {
@@ -93,7 +93,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 width={800}
                 height={600}
                 sizes="(max-width: 960px) 100vw, 45vw"
-                priority
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
 

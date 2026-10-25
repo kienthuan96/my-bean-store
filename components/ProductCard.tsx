@@ -13,7 +13,7 @@ export default function ProductCard({ product }: { product: Product }) {
           alt={product.name}
           width={440}
           height={330}
-          sizes="220px"
+          sizes="(max-width: 75rem) 104px, 200px"
           className="board__img"
         />
       </Link>

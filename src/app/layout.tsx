@@ -8,14 +8,14 @@ import Footer from '../../components/Footer';
 import JsonLd from '../../components/JsonLd';
 
 const vollkorn = Vollkorn({
-  subsets: ['latin', 'latin-ext', 'vietnamese'],
+  subsets: ['latin', 'vietnamese'],
   weight: '600',
   display: 'swap',
   variable: '--font-vollkorn',
 });
 
 const hanken = Hanken_Grotesk({
-  subsets: ['latin', 'latin-ext', 'vietnamese'],
+  subsets: ['latin', 'vietnamese'],
   weight: ['400', '500'],
   display: 'swap',
   variable: '--font-hanken',
@@ -43,6 +43,7 @@ export const metadata: Metadata = {
     siteName: 'Kho Nông Sản Đậu',
     title: 'Kho Nông Sản Đậu - Chuyên Các Loại Đậu Sỉ & Lẻ',
     description: 'Chuyên cung cấp đậu xanh, đậu đen xanh lòng, đậu đỏ, đậu nành, đậu trắng giá tốt tại kho.',
+    images: [{ url: '/products/dau-xanh-hat.png', width: 1024, height: 1024, alt: 'Đậu xanh hạt tại Kho Nông Sản Đậu' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -50,6 +51,7 @@ export const metadata: Metadata = {
     creator: '@khonongsan',
     title: 'Kho Nông Sản Đậu - Chuyên Các Loại Đậu Sỉ & Lẻ',
     description: 'Chuyên cung cấp đậu xanh, đậu đen xanh lòng, đậu đỏ, đậu nành, đậu trắng giá tốt tại kho.',
+    images: ['/products/dau-xanh-hat.png'],
   },
   icons: {
     icon: '/favicon.ico',

@@ -1,9 +1,10 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PRODUCTS } from './data/products';
 import ProductCard from '../../components/ProductCard';
 import { PhoneButton, ZaloButton } from '../../components/ContactButtons';
-import { PHONE_NUMBER } from './data/site';
+import { PHONE_NUMBER, SITE_URL } from './data/site';
 import PriceText from '../../components/PriceText';
 
 // Năm nhóm đậu của dòng giới thiệu: [id sản phẩm, vị trí ảnh]. Ô đầu là ô lớn.
@@ -14,6 +15,12 @@ const HERO_PICKS: Array<[string, number]> = [
   ['dau-nanh', 1],
   ['dau-trang-bi', 1],
 ];
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: SITE_URL,
+  },
+};
 
 export default function HomePage() {
   const heroCells = HERO_PICKS.flatMap(([id, index]) => {
@@ -48,7 +55,8 @@ export default function HomePage() {
                   height={i === 0 ? 800 : 400}
                   sizes={i === 0 ? '(min-width: 60rem) 28vw, 100vw' : '(min-width: 60rem) 14vw, 50vw'}
                   className="mosaic__img"
-                  priority={i === 0}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  fetchPriority={i === 0 ? 'high' : 'auto'}
                 />
                 <span className="mosaic__plate">
                   <span className="mosaic__name">{product.name}</span>
