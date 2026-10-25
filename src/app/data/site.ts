@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://my-bean-store.vercel.app';
+export const SITE_URL = 'https://www.daugiasi.com.vn';
 export const BRAND_NAME = 'Kho Nông Sản Đậu';
 
 export const PHONE_NUMBER = '0933650317';
