@@ -20,68 +20,50 @@ const PURCHASE_POLICIES = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#9E3F20] text-[#FDFBF7] pt-10 pb-6 px-4 border-t-4 border-[#782D14]">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8 pb-4 border-b border-[#B85737]">
-          <h3 className="font-serif text-lg sm:text-xl font-bold uppercase tracking-wider text-[#FFE8D6]">
-            THÔNG TIN LIÊN HỆ & CHÍNH SÁCH
-          </h3>
-        </div>
+    <footer className="footer">
+      <div className="wrap">
+        <p className="footer__mast">Kho Nông Sản Đậu</p>
+        <h2 className="footer__title">Thông tin liên hệ & chính sách</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 text-sm">
+        <div className="footer__cells">
           {/* CỘT 1: THÔNG TIN KHO */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 font-serif font-bold text-base text-[#FFE8D6]">
-              <span>🛖</span> KHO NÔNG SẢN ĐẬU
-            </div>
-            <p className="flex items-start gap-2 text-[#F2DDD0] text-xs leading-relaxed">
-              <span>📍</span> {ADDRESS_FULL}
-            </p>
-            <p className="flex items-center gap-2 text-[#F2DDD0] text-xs">
-              <span>📞</span> Hotline: {PHONE_NUMBER}
-            </p>
-            <p className="flex items-center gap-2 text-[#F2DDD0] text-xs">
-              <span>✉️</span> Email: {EMAIL}
-            </p>
+          <div className="footer__cell footer__cell--contact">
+            <address className="footer__address">
+              <p>{ADDRESS_FULL}</p>
+              <p>Hotline: {PHONE_NUMBER}</p>
+              <p>Email: {EMAIL}</p>
+            </address>
           </div>
 
           {/* CỘT 2: SẢN PHẨM NỔI BẬT */}
-          <div>
-            <h4 className="font-serif font-bold text-base text-[#FFE8D6] mb-3">SẢN PHẨM NỔI BẬT</h4>
-            <ul className="space-y-2 text-xs text-[#F2DDD0]">
+          <div className="footer__cell footer__cell--featured">
+            <h3>Sản phẩm nổi bật</h3>
+            <ul className="footer__list">
               {FEATURED_PRODUCTS.map((name) => (
-                <li key={name} className="hover:text-white cursor-pointer">
-                  • {name}
-                </li>
+                <li key={name}>{name}</li>
               ))}
             </ul>
           </div>
 
           {/* CỘT 3: CHÍNH SÁCH */}
-          <div>
-            <h4 className="font-serif font-bold text-base text-[#FFE8D6] mb-3">CHÍNH SÁCH MUA HÀNG</h4>
-            <ul className="space-y-2 text-xs text-[#F2DDD0]">
+          <div className="footer__cell footer__cell--policy">
+            <h3>Chính sách mua hàng</h3>
+            <ul className="footer__list">
               {PURCHASE_POLICIES.map((policy) => (
-                <li key={policy}>• {policy}</li>
+                <li key={policy}>{policy}</li>
               ))}
             </ul>
           </div>
 
           {/* CỘT 4: MẠNG XÃ HỘI */}
-          <div>
-            <h4 className="font-serif font-bold text-base text-[#FFE8D6] mb-3">THEO DÕI CHÚNG TÔI</h4>
-            <div className="space-y-2">
-              <ZaloButton className="block bg-[#833116] hover:bg-[#722A12] px-3 py-1.5 rounded text-xs text-center border border-[#B34D2C] transition">
-                💬 Zalo
-              </ZaloButton>
-            </div>
+          <div className="footer__cell footer__cell--social">
+            <h3>Theo dõi chúng tôi</h3>
+            <ZaloButton className="btn">Zalo</ZaloButton>
           </div>
         </div>
 
         {/* DÒNG BẢN QUYỀN */}
-        <div className="pt-4 border-t border-[#B85737] text-center text-[11px] text-[#E8C2B3]">
-          Bản quyền © 2026 Kho Nông Sản Đậu Sạch.
-        </div>
+        <p className="footer__legal">Bản quyền © 2026 Kho Nông Sản Đậu Sạch.</p>
       </div>
     </footer>
   );

@@ -1,10 +1,25 @@
 import type { Metadata, Viewport } from 'next';
+import { Hanken_Grotesk, Vollkorn } from 'next/font/google';
 import './globals.css';
 import { SITE_URL } from './data/site';
 import { buildOrganizationJsonLd } from './lib/seo';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import JsonLd from '../../components/JsonLd';
+
+const vollkorn = Vollkorn({
+  subsets: ['latin', 'latin-ext', 'vietnamese'],
+  weight: '600',
+  display: 'swap',
+  variable: '--font-vollkorn',
+});
+
+const hanken = Hanken_Grotesk({
+  subsets: ['latin', 'latin-ext', 'vietnamese'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-hanken',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -51,7 +66,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#74834A',
+  themeColor: '#F6F1E0',
 };
 
 export default function RootLayout({
@@ -60,8 +75,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi">
-      <body className="antialiased text-[#3E2B1E] bg-[#EFE6D3] font-sans">
+    <html lang="vi" className={`${vollkorn.variable} ${hanken.variable}`}>
+      <body>
+        <a className="skip" href="#main">Bỏ qua đến nội dung</a>
         <JsonLd data={buildOrganizationJsonLd()} />
 
         <Header />

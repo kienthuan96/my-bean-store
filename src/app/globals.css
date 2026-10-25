@@ -1,26 +1,12 @@
+/* Hallmark · shape: Catalogue · genre: editorial · theme: Garden (by request) · redesign: restyle (the Brutal build's layout kept, system replaced)
+ * hero: Stage · nav: edge-aligned · footer: mast · imagery: the owner's own product photographs in natural colour · signature: the price board, twelve hairline rows on an oat well with the price as the largest figure in each row
+ * axes: light/roman-serif/chromatic-green · posture: committed · contrast: pass · fold: pass · job: buy · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V, the layout is the Brutal build's by the owner's choice; changed the material (oat paper, green ink, Vollkorn, pills, hairlines, moss wells) rather than the shape */
+/* Hallmark · reworded "Chuyên Các Loại Đậu - Giá Cả Cạnh Tranh" to "Chuyên các loại đậu, giá cạnh tranh" · 63 names the spaced hyphen joining two phrases and 19 the title-case head */
+/* Hallmark · reworded "Đậu xanh • Đậu đen • Đậu đỏ • Đậu nành • Đậu trắng" to "Kho sỉ và lẻ: đậu xanh, đen, đỏ, nành, trắng." · 63 names the dotted string and 54 the eyebrow "KHO NÔNG SẢN SỈ & LẺ" whose fact moved into this line */
+/* Hallmark · answered F7 · Garden's one 4px radius on wells and photographs is the theme's own surface, and the boxes differ by fill: oat, moss, green ink */
+/* Hallmark · dismissed 77 · a one-product detail page: the offer, its terms, its specs and the footer are everything the page held */
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@import "./tokens.css";
+@import "./base.css" layer(base);
+@import "./site.css";

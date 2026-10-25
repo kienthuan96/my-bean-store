@@ -6,6 +6,7 @@ import { PRODUCTS } from '../../data/products';
 import { PHONE_NUMBER, SITE_URL } from '../../data/site';
 import { buildBreadcrumbJsonLd, buildProductJsonLd } from '../../lib/seo';
 import JsonLd from '../../../../components/JsonLd';
+import PriceText from '../../../../components/PriceText';
 import { PhoneButton, ZaloButton } from '../../../../components/ContactButtons';
 
 interface PageProps {
@@ -67,145 +68,122 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const productUrl = `${SITE_URL}/products/${product.id}`;
 
   return (
-    <main className="min-h-screen pb-24 bg-[#FFFDF9] text-[#3E2B1E]">
+    <main id="main">
       <JsonLd data={buildProductJsonLd(product, productUrl)} />
       <JsonLd data={buildBreadcrumbJsonLd(product, productUrl)} />
 
       {/* BREADCRUMB */}
-      <div className="bg-[#F7F2E7] border-b border-[#ECE5D8] py-3 px-4 shadow-sm">
-        <div className="max-w-4xl mx-auto text-xs text-[#8A7966] flex items-center gap-2">
-          <Link href="/" className="hover:text-[#B8421D] font-medium transition">Trang chủ</Link>
-          <span>/</span>
-          <span className="text-[#3E2B1E] font-bold font-serif">{product.name}</span>
-        </div>
-      </div>
+      <nav className="crumbs" aria-label="Đường dẫn">
+        <ol className="wrap crumbs__list">
+          <li><Link href="/">Trang chủ</Link></li>
+          <li aria-hidden="true">/</li>
+          <li className="crumbs__here" aria-current="page">{product.name}</li>
+        </ol>
+      </nav>
 
-      <div className="max-w-4xl mx-auto px-4 mt-6">
-        <div className="bg-white rounded-2xl border border-[#ECE5D8] p-5 sm:p-8 shadow-sm">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <section className="offer">
+        <div className="wrap offer__grid">
 
-            {/* CỘT 1: HÌNH ẢNH SẢN PHẨM */}
-            <div>
-              <div className="rounded-xl overflow-hidden bg-[#FAF7F2] border border-[#ECE5D8]">
-                <Image
-                  src={product.images[0]}
-                  alt={product.name}
-                  width={800}
-                  height={600}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  priority
-                  className="w-full h-72 sm:h-80 object-cover"
-                />
-              </div>
+          {/* CỘT 1: HÌNH ẢNH SẢN PHẨM */}
+          <div className="offer__photos">
+            <div className="frame frame--main">
+              <Image
+                src={product.images[0]}
+                alt={product.name}
+                width={800}
+                height={600}
+                sizes="(max-width: 960px) 100vw, 45vw"
+                priority
+              />
+            </div>
 
-              {product.images.length > 1 && (
-                <div className="grid grid-cols-3 gap-2 mt-3">
-                  {product.images.map((img, idx) => (
+            {product.images.length > 1 && (
+              <div className="thumbs">
+                {product.images.map((img, idx) => (
+                  <div className="frame" key={idx}>
                     <Image
-                      key={idx}
                       src={img}
                       alt={`${product.name} ${idx + 1}`}
                       width={200}
                       height={200}
-                      sizes="(max-width: 640px) 33vw, 25vw"
-                      className="rounded-lg h-20 w-full object-cover border border-[#ECE5D8]"
+                      sizes="(max-width: 960px) 25vw, 11vw"
                     />
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* CỘT 2: THÔNG TIN & NÚT LIÊN HỆ */}
-            <div className="flex flex-col justify-between">
-              <div>
-                <span className="inline-block bg-[#8C7147] text-[#FFFDF7] text-xs font-bold px-3 py-1 rounded shadow-sm border border-[#6E5734]">
-                  🏷️ Xuất xứ: {product.origin}
-                </span>
-
-                <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#3E2B1E] mt-3">
-                  {product.name}
-                </h1>
-
-                <div className="mt-4 p-4 bg-[#FFFBF3] rounded-xl border border-[#ECE5D8]">
-                  <span className="text-xs text-[#8A7966] font-semibold uppercase tracking-wider">
-                    Khoảng giá tham khảo:
-                  </span>
-                  <p className="text-2xl sm:text-3xl font-sans font-extrabold text-[#B8421D] mt-0.5 lining-nums tabular-nums tracking-tight">
-                    {product.priceRange}
-                  </p>
-                  <p className="text-[11px] text-[#8A7966] mt-1 italic">
-                    *Giá thay đổi theo biến động thị trường & số lượng mua
-                  </p>
-
-                  <div className="mt-3 space-y-1.5 text-xs text-[#5A4839]">
-                    <p className="flex items-center gap-1.5 font-medium">
-                      <span>📦</span> <b>Chính sách sỉ:</b> Bán sỉ từ 10kg trở lên
-                    </p>
-                    <p className="flex items-center gap-1.5 font-medium">
-                      <span>🚚</span> <b>Điều kiện giao:</b> Nhận giao tận nơi cho đơn từ 50kg
-                    </p>
-                    <p className="flex items-center gap-1.5 font-medium">
-                      <span>📍</span> <b>Phạm vi:</b> Khách ở gần hỗ trợ giao ngay, ở xa thương lượng phương thức vận chuyển
-                    </p>
                   </div>
-                </div>
-
-                <p className="text-[#5A4839] text-sm mt-4 leading-relaxed">
-                  {product.fullDesc}
-                </p>
+                ))}
               </div>
-
-              <div className="mt-6 space-y-3">
-                <ZaloButton className="w-full bg-[#A07C4A] hover:bg-[#8A683B] text-white font-bold py-3 px-4 rounded-xl text-center block shadow border border-[#7D5E34] transition text-sm sm:text-base">
-                  💬 Chat Zalo Nhận Báo Giá Số Lượng Lớn
-                </ZaloButton>
-                <PhoneButton className="w-full bg-[#B8421D] hover:bg-[#9C3516] text-white font-bold py-3 px-4 rounded-xl text-center block shadow border border-[#7A2B13] transition text-sm sm:text-base">
-                  📞 Gọi Ngay Hotline: {PHONE_NUMBER}
-                </PhoneButton>
-              </div>
-            </div>
-
+            )}
           </div>
 
-          {/* QUY CÁCH & CÔNG DỤNG */}
-          <div className="mt-8 pt-6 border-t border-[#ECE5D8] grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="bg-[#FFFDF9] p-4 rounded-xl border border-[#ECE5D8]">
-              <h3 className="font-serif font-bold text-[#3E2B1E] text-base mb-3 flex items-center gap-2">
-                📋 Quy Cách & Chất Lượng
-              </h3>
-              <ul className="space-y-2 text-sm text-[#5A4839]">
+          {/* CỘT 2: THÔNG TIN & NÚT LIÊN HỆ */}
+          <div className="offer__info">
+            <p className="offer__origin">Xuất xứ: {product.origin}</p>
+
+            <h1>{product.name}</h1>
+
+            <div className="priceplate">
+              <p className="priceplate__label">Khoảng giá tham khảo:</p>
+              <p className="priceplate__price"><mark><PriceText value={product.priceRange} /></mark></p>
+              <p className="priceplate__note">Giá thay đổi theo biến động thị trường & số lượng mua</p>
+            </div>
+
+            <div className="offer__acts">
+              <ZaloButton className="btn btn--ink btn--wide">Chat Zalo nhận báo giá số lượng lớn</ZaloButton>
+              <PhoneButton className="btn btn--wide">Gọi ngay hotline: {PHONE_NUMBER}</PhoneButton>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section className="brief" aria-label="Mô tả và chính sách">
+        <div className="wrap brief__grid">
+          <p className="offer__desc">{product.fullDesc}</p>
+
+          <dl className="facts">
+            <div className="facts__row">
+              <dt>Chính sách sỉ</dt>
+              <dd>Bán sỉ từ 10kg trở lên</dd>
+            </div>
+            <div className="facts__row">
+              <dt>Điều kiện giao</dt>
+              <dd>Nhận giao tận nơi cho đơn từ 50kg</dd>
+            </div>
+            <div className="facts__row">
+              <dt>Phạm vi</dt>
+              <dd>Khách ở gần hỗ trợ giao ngay, ở xa thương lượng phương thức vận chuyển</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      {/* QUY CÁCH & CÔNG DỤNG */}
+      <section className="section detail-section" aria-label="Quy cách và ứng dụng">
+        <div className="wrap">
+          <div className="detail">
+            <div className="detail__cell">
+              <h2>Quy Cách & Chất Lượng</h2>
+              <ul className="detail__list">
                 {product.specs.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-[#B8421D] font-bold">✓</span> {item}
-                  </li>
+                  <li key={idx}>{item}</li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-[#FFFDF9] p-4 rounded-xl border border-[#ECE5D8]">
-              <h3 className="font-serif font-bold text-[#3E2B1E] text-base mb-3 flex items-center gap-2">
-                💡 Ứng Dụng Thực Tế
-              </h3>
-              <ul className="space-y-2 text-sm text-[#5A4839]">
+            <div className="detail__cell">
+              <h2>Ứng Dụng Thực Tế</h2>
+              <ul className="detail__list">
                 {product.uses.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-[#B8421D] font-bold">•</span> {item}
-                  </li>
+                  <li key={idx}>{item}</li>
                 ))}
               </ul>
             </div>
           </div>
-        </div>
 
-        <div className="mt-6 text-center">
-          <Link
-            href="/"
-            className="inline-block text-[#B8421D] hover:text-[#833217] text-sm font-serif font-bold underline transition"
-          >
-            ← Quay lại xem tất cả các loại đậu
-          </Link>
+          <p className="back">
+            <Link href="/">Quay lại xem tất cả các loại đậu</Link>
+          </p>
         </div>
-      </div>
+      </section>
     </main>
   );
 }
