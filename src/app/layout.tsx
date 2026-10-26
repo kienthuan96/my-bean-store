@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Hanken_Grotesk, Vollkorn } from 'next/font/google';
 import './globals.css';
-import { SITE_URL } from './data/site';
+import Script from 'next/script';
+import { GOOGLE_ADS_ID, SITE_URL } from './data/site';
 import { buildOrganizationJsonLd } from './lib/seo';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -79,6 +80,13 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`${vollkorn.variable} ${hanken.variable}`}>
       <body>
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`} strategy="afterInteractive" />
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GOOGLE_ADS_ID}');`}
+        </Script>
         <a className="skip" href="#main">Bỏ qua đến nội dung</a>
         <JsonLd data={buildOrganizationJsonLd()} />
 

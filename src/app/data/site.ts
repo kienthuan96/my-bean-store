@@ -11,3 +11,5 @@ export const ADDRESS = {
   country: 'VN',
 };
 export const ADDRESS_FULL = `${ADDRESS.street}, ${ADDRESS.city}`;
+
+export const GOOGLE_ADS_ID = 'AW-18538346790';
