@@ -55,7 +55,10 @@ export const metadata: Metadata = {
     images: ['/products/dau-xanh-hat.png'],
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
     apple: '/apple-touch-icon.png',
   },
   verification: {
