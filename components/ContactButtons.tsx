@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { PHONE_NUMBER, ZALO_LINK } from '../src/app/data/site';
+import { CONTACT_CONVERSION_SEND_TO, PHONE_NUMBER, ZALO_LINK } from '../src/app/data/site';
 
 interface ContactButtonProps {
   className?: string;
@@ -13,7 +13,9 @@ type Gtag = (command: 'event', name: string, params?: Record<string, string>) =>
 // Reports a click to Google when the tag has loaded; does nothing otherwise.
 function track(name: string) {
   const gtag = (window as unknown as { gtag?: Gtag }).gtag;
-  if (typeof gtag === 'function') gtag('event', name, { page_path: window.location.pathname });
+  if (typeof gtag !== 'function') return;
+  gtag('event', name, { page_path: window.location.pathname });
+  gtag('event', 'conversion', { send_to: CONTACT_CONVERSION_SEND_TO });
 }
 
 export function ZaloButton({ className, children }: ContactButtonProps) {

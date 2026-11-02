@@ -13,3 +13,4 @@ export const ADDRESS = {
 export const ADDRESS_FULL = `${ADDRESS.street}, ${ADDRESS.city}`;
 
 export const GOOGLE_ADS_ID = 'AW-18538346790';
+export const CONTACT_CONVERSION_SEND_TO = `${GOOGLE_ADS_ID}/sEVECKfb2bAdEKby4odF`;
