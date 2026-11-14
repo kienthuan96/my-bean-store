@@ -76,7 +76,7 @@ export default function HomePage() {
             <p>Bấm vào sản phẩm để xem chi tiết</p>
           </div>
 
-          <div className="board">
+          <div className="board board--split">
             <div className="board__head" aria-hidden="true">
               <span>Sản phẩm</span>
               <span>Khoảng giá</span>
