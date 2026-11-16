@@ -3,6 +3,7 @@ export const BRAND_NAME = 'Kho Nông Sản Đậu';
 
 export const PHONE_NUMBER = '0933650317';
 export const ZALO_LINK = `https://zalo.me/${PHONE_NUMBER}`;
+export const FACEBOOK_LINK = 'https://www.facebook.com/daugiasi';
 export const EMAIL = 'triplethuan96@gmail.com';
 
 export const ADDRESS = {

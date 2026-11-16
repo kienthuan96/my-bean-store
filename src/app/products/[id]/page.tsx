@@ -143,11 +143,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <dl className="facts">
             <div className="facts__row">
               <dt>Chính sách sỉ</dt>
-              <dd>Bán sỉ từ 10kg trở lên</dd>
+              <dd>Nhận đơn từ 30kg, giá sỉ tốt nhất cho đơn trên 50kg</dd>
             </div>
             <div className="facts__row">
               <dt>Điều kiện giao</dt>
-              <dd>Nhận giao tận nơi cho đơn từ 50kg</dd>
+              <dd>Hỗ trợ giao hàng tận nơi tại TP.HCM</dd>
             </div>
             <div className="facts__row">
               <dt>Phạm vi</dt>

@@ -1,5 +1,5 @@
 import type { Product } from '../data/products';
-import { ADDRESS, BRAND_NAME, EMAIL, PHONE_NUMBER, SITE_URL } from '../data/site';
+import { ADDRESS, BRAND_NAME, EMAIL, FACEBOOK_LINK, PHONE_NUMBER, SITE_URL } from '../data/site';
 
 /** "40.000đ - 45.000đ / kg" -> { lowPrice: "40000", highPrice: "45000" } */
 export function parsePriceRange(priceRange: string): { lowPrice: string; highPrice: string } {
@@ -19,6 +19,8 @@ export function buildOrganizationJsonLd() {
     image: `${SITE_URL}/products/dau-xanh-hat.png`,
     telephone: PHONE_NUMBER,
     email: EMAIL,
+    sameAs: [FACEBOOK_LINK],
+    openingHours: 'Mo-Su 07:00-18:00',
     address: {
       '@type': 'PostalAddress',
       streetAddress: ADDRESS.street,

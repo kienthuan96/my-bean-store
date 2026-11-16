@@ -99,12 +99,12 @@ export default function HomePage() {
 
           <div className="terms">
             <div className="terms__cell terms__cell--a">
-              <p className="terms__fig">10kg</p>
-              <p className="terms__label">Bán sỉ tối thiểu từ 10kg</p>
+              <p className="terms__fig">30kg</p>
+              <p className="terms__label">Nhận đơn từ 30kg</p>
             </div>
             <div className="terms__cell terms__cell--b">
               <p className="terms__fig">50kg</p>
-              <p className="terms__label">Nhận giao hàng tận nơi đơn từ 50kg trở lên</p>
+              <p className="terms__label">Giá sỉ tốt nhất cho đơn trên 50kg</p>
             </div>
             <div className="terms__cell terms__cell--c">
               <p className="terms__fig">COD</p>
@@ -112,7 +112,7 @@ export default function HomePage() {
             </div>
             <div className="terms__cell terms__cell--d">
               <p className="terms__fig terms__fig--s">Kiểm tra hàng trước khi thanh toán</p>
-              <p className="terms__label">Đơn hàng gần hỗ trợ giao tận nơi</p>
+              <p className="terms__label">Hỗ trợ giao hàng tận nơi tại TP.HCM</p>
             </div>
           </div>
         </div>
