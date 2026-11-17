@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Hanken_Grotesk, Vollkorn } from 'next/font/google';
 import './globals.css';
 import Script from 'next/script';
-import { GOOGLE_ADS_ID, SITE_URL } from './data/site';
+import { GA4_ID, GOOGLE_ADS_ID, SITE_URL } from './data/site';
 import { buildOrganizationJsonLd } from './lib/seo';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -88,7 +88,8 @@ export default function RootLayout({
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GOOGLE_ADS_ID}');`}
+gtag('config', '${GOOGLE_ADS_ID}');
+gtag('config', '${GA4_ID}');`}
         </Script>
         <a className="skip" href="#main">Bỏ qua đến nội dung</a>
         <JsonLd data={buildOrganizationJsonLd()} />
