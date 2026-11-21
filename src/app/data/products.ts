@@ -179,7 +179,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'duong-phen-quang-ngai',
         name: 'Đường Phèn Quảng Ngãi',
-        priceRange: '34.000đ / kg',
+        priceRange: '35.000đ / kg',
         origin: 'Quảng Ngãi, Việt Nam',
         shortDesc: 'Đường phèn vàng hổ phách, kết tinh thành khối, ngọt thanh.',
         fullDesc: 'Đường phèn Quảng Ngãi làm từ mía, kết tinh thành khối lớn màu vàng như mật ong. Viên đường khô, giòn, ít vụn, nấu lên có vị ngọt dịu và mùi mía nhẹ. Quán tàu hũ, quán chè hay dùng để nước đường thơm và không gắt.',
