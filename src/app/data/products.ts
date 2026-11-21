@@ -165,7 +165,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'me-trang',
         name: 'Mè Trắng (Vừng Trắng)',
-        priceRange: '60.000đ - 70.000đ / kg',
+        priceRange: '72.000đ / kg',
         origin: 'Việt Nam',
         shortDesc: 'Mè trắng chọn lọc, hạt mẩy đều, thơm bùi khi rang.',
         fullDesc: 'Mè trắng hạt đều màu, đã làm sạch bụi bẩn. Rất thích hợp làm gia vị rắc bánh, làm kẹo mè xửng, rang làm muối vừng hoặc ép dầu.',
@@ -174,6 +174,20 @@ export const PRODUCTS: Product[] = [
         images: [
             '/products/me-trang.jpg',
             '/products/me-trang-1.jpeg'
+        ],
+    },
+    {
+        id: 'duong-phen-quang-ngai',
+        name: 'Đường Phèn Quảng Ngãi',
+        priceRange: '34.000đ / kg',
+        origin: 'Quảng Ngãi, Việt Nam',
+        shortDesc: 'Đường phèn vàng hổ phách, kết tinh thành khối, ngọt thanh.',
+        fullDesc: 'Đường phèn Quảng Ngãi làm từ mía, kết tinh thành khối lớn màu vàng như mật ong. Viên đường khô, giòn, ít vụn, nấu lên có vị ngọt dịu và mùi mía nhẹ. Quán tàu hũ, quán chè hay dùng để nước đường thơm và không gắt.',
+        specs: ['Kết tinh khối, màu vàng tự nhiên', 'Đóng gói: Từ bao 10kg trở lên'],
+        uses: ['Nấu nước đường tàu hũ, tàu hủ nước đường gừng', 'Nấu chè hạt sen, chè đậu xanh, sâm bổ lượng', 'Chưng yến, chưng lê'],
+        images: [
+            '/products/duong-phen-quang-ngai.jpg',
+            '/products/duong-phen-quang-ngai-1.jpg',
         ],
     },
 ];
